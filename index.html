@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Evexia</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="http://www.parsecdn.com/js/parse-1.6.7.min.js"></script>
+</head>
+
+<body>
+    <div class="ui-widget">
+        <form>
+            <label for="tags">Symptoms: </label>
+            <input id="tags">
+            <input id="submit" type="submit" value="Add" />
+        </form>
+    </div>
+    <ul id="list">
+    </ul>
+    <button id="diagnose">Diagnose</button>
+    <button id="test">Test</button>
+    <script>
+    $(function() {
+
+        Parse.$ = jQuery;
+
+        Parse.initialize("VIgbq4se9obAeOz2MqRYJjxjSU2kmUD6PqzRpyBQ", "yOldHrAUciIV8OyBzg9SikdoKOhd8rqy6sKdDHHe");
+
+        getSymptoms();
+
+        var removeButton;
+
+        var symptomArrays = [];
+
+        var addedSymptoms = [];
+
+        $(".delete").click(function(e) {
+            e.preventDefault();
+
+            alert($(this).getClass());
+
+            var elem = $("#list");
+
+            elem.parentNode.removeChild(elem);
+        });
+
+        var lastid = 0;
+
+        $("#submit").click(function(e) {
+            e.preventDefault();
+
+            var availableSymptoms = [];
+
+            for (var j = 0; j < symptomArrays.length; j++) {
+                var arr = symptomArrays[j];
+                for (var k = 0; k < arr.length; k++) {
+                    availableSymptoms.push(arr[k]);
+                }
+            }
+
+            var symptom = $("#tags").val();
+
+            var symptomFound = false;
+
+            for (var i = 0; i < availableSymptoms.length; i++) {
+                if (symptom == availableSymptoms[i]) {
+                    symptomFound = true;
+                    break;
+                } else {
+                    symptomFound = false;
+                }
+            }
+
+            if (symptomFound) {
+                addedSymptoms.push(symptom);
+
+                var list = document.getElementById("list");
+
+                var entry = document.createElement('li');
+                entry.appendChild(document.createTextNode('Added ' + symptom + '!'));
+                entry.setAttribute('id', 'item' + lastid);
+                var removeButton = document.createElement('button');
+                removeButton.appendChild(document.createTextNode("Remove"));
+                var itemStr = "item" + lastid;
+                removeButton.onclick = function() {
+                    removeSymptom(itemStr);
+                }
+                entry.appendChild(removeButton);
+                lastid = lastid + 1;
+                list.appendChild(entry);
+            } else {
+
+                alert("Symptom not found!");
+                $("#tags").val("");
+            }
+
+        });
+
+        function removeSymptom(itemid) {
+            var list = document.getElementById("list");
+            var item = document.getElementById(itemid);
+            list.removeChild(item);
+        }
+
+        $("#diagnose").click(function(e) {
+            e.preventDefault();
+            for (var i = 0; i < addedSymptoms.length; i++) {
+                alert(addedSymptoms[i]);
+            }
+        });
+
+        function getSymptoms() {
+            var Diseases = Parse.Object.extend("Diseases");
+            var diseases = new Diseases();
+
+            var query = new Parse.Query(diseases);
+
+            query.find({
+                success: function(diseases) {
+                    $.each(diseases, function(i, disease) {
+                        symptomArrays.push(disease.get("symptoms"));
+                    });
+
+                    var symptoms = [];
+
+                    for (var j = 0; j < symptomArrays.length; j++) {
+                        var arr = symptomArrays[j];
+                        for (var k = 0; k < arr.length; k++) {
+                            symptoms.push(arr[k]);
+                        }
+                    }
+
+                    $("#tags").autocomplete({
+                        source: symptoms
+                    });
+                },
+                error: function(error) {
+                    console.log("There was an error");
+                }
+            });
+        }
+
+    });
+    </script>
+</body>
+
+</html>
