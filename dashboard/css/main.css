@@ -1,0 +1,220 @@
+  html {
+      /*font-family: 'Open Sans', sans-serif;*/
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 200;
+      overflow: scroll;
+  }
+  /* icon prefix focus color */
+  
+  .input-field .prefix.active {
+      color: #000;
+  }
+
+  .side-nav {
+    width: 100px !important;
+  }
+  
+  #goalsTable {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 200;
+  }
+  
+  thead tr th {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+      font-weight: 300 !important;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+      font-weight: 200;
+  }
+  /* label color */
+  
+  #icon_prefix label {
+      color: #000;
+  }
+  /* label focus color */
+  
+  #icon_prefix:focus + label {
+      color: #000;
+  }
+  /* label underline focus color */
+  
+  #icon_prefix:focus {
+      border-bottom: 1px solid #fff;
+      box-shadow: 0 1px 0 0 #fff;
+  }
+  /* valid color */
+  
+  #icon_prefix.valid {
+      border-bottom: 1px solid #fff;
+      box-shadow: 0 1px 0 0 #fff;
+  }
+  /* invalid color */
+  
+  #icon_prefix.invalid {
+      border-bottom: 1px solid #fff;
+      box-shadow: 0 1px 0 0 #fff;
+  }
+  /* icon prefix focus color */
+  
+  #icon_prefix .prefix.active {
+      color: #fff;
+  }
+  
+  #chart1 {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  
+  .nav-wrapper {
+      z-index: 1000;
+  }
+  
+  .tabActive {
+      background-color: white;
+      border-radius: 0px 0px 0px 0px;
+      color: black;
+  }
+  
+  nav {
+      background-color: black !important;
+  }
+  
+  #logout {
+      font-size: 1.5em;
+      width: 65px;
+      text-align: center;
+  }
+  
+  #aboutUsPage {
+      display: none;
+  }
+  
+  #goalsPage {
+      display: none;
+  }
+  
+  #suggestionsPage {
+      display: none;
+  }
+  
+  .goals {
+      font-size: 1.5em;
+      width: 65px;
+      text-align: center;
+  }
+  
+  .analytics {
+      font-size: 1.5em;
+      width: 65px;
+      text-align: center;
+  }
+  
+  .aboutus {
+      font-size: 1.5em;
+      width: 65px;
+      text-align: center;
+  }
+  
+  .suggestions {
+      font-size: 1.5em;
+      width: 65px;
+      text-align: center;
+  }
+  
+  .goals:hover {
+      background-color: white;
+      border-radius: 0px 0px 0px 0px;
+      color: black;
+  }
+  
+  .suggestions:hover {
+      background-color: white;
+      border-radius: 0px 0px 0px 0px;
+      color: black;
+  }
+  
+  .analytics:hover {
+      background-color: white;
+      border-radius: 0px 0px 0px 0px;
+      color: black;
+  }
+  
+  .aboutus:hover {
+      background-color: white;
+      border-radius: 0px 0px 0px 0px;
+      color: black;
+  }
+  
+  #logout:hover {
+      background-color: white;
+      border-radius: 0px 0px 0px 0px;
+      color: black;
+  }
+  
+  .tab:hover {
+      background-color: black;
+      color: white !important;
+  }
+  
+  .tab {
+      color: black !important;
+      margin: 0;
+      padding: 0;
+  }
+  
+  .tabs {
+      margin-top: 5px;
+      bottom: 0;
+  }
+  
+  @media only screen and (max-width: 480px) {
+      nav {
+          display: none;
+      }
+      ;
+      .fixed-action-btn {
+          display: none;
+      }
+      ;
+  }
+  
+  @media only screen and (min-width: 481px) {
+      nav {
+          display: block;
+      }
+      ;
+      .fixed-action-btn {
+          display: block;
+      }
+      ;
+  }
+  
+  @media only screen and (max-width:600px) {
+      /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+      .brand-logo {
+          display: none;
+      }
+      ;
+  }
+  
+  @media only screen and (max-width:801px) {
+      /* tablet, landscape iPad, lo-res laptops ands desktops */
+      .brand-logo {
+          display: none;
+      }
+      ;
+  }
+  
+  @media only screen and (max-device-width: 667px) and (orientation: landscape) {
+      nav {
+          display: none;
+      }
+      ;
+  }
+  
+  @media only screen and (max-device-width: 667px) and (orientation: portrait) {
+      nav {
+          display: none;
+      }
+      ;
+  }

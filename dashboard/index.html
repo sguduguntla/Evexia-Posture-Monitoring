@@ -1,0 +1,975 @@
+<html>
+
+<head>
+    <title>Evexia</title>
+    <link rel="icon" href="img/evexia-icons/favicon.ico" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/highcharts-more.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/profile.js"></script>
+    <script src="js/exporting.js"></script>
+    <script src="js/jspdf.js"></script>
+    <script src="js/canvg.js"></script>
+    <script src="js/rgbcolor.js"></script>
+</head>
+
+<body>
+    <nav>
+        <div style="background-color: rgba(20, 147, 226, 1)" class="nav-wrapper">
+            <a href="#" class="animated fadeIn brand-logo center" style="color: white;">Guest's Dashboard</a>
+            <a href="#" id="menuBtn" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a class="analytics animated fadeIn tabActive tooltipped" data-position="bottom" data-delay="50" data-tooltip="Analytics"><i class="fa fa-lg fa-line-chart"></i></a></li>
+                <li><a class="aboutus animated fadeIn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Why Posture?"><i class="fa fa-lg fa-male"></i></a></li>
+                <li><a class="goals animated fadeIn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Goals"><i class="fa fa-lg fa-tasks"></i></a></li>
+                <li><a class="suggestions animated fadeIn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Suggestions"><i class="fa fa-lg fa-commenting-o"></i></a></li>
+                <li><a class="showProfile"><i class="fa fa-lg fa-chevron-down"></i></a></li>
+            </ul>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a class="animated fadeIn" id="logout"><i class="fa
+                 fa-lg fa-sign-out"></i></a></li>
+                <li style="margin-left: 10px; font-size: 1.2em;" class="animated fadeIn dateToday"></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li><a class="analytics animated fadeIn tabActive tooltipped" data-position="right" data-delay="50" data-tooltip="Analytics"><i class="fa fa-lg fa-line-chart"></i></a></li>
+                <li><a class="aboutus animated fadeIn tooltipped" data-position="right" data-delay="50" data-tooltip="Why Posture?"><i class="fa fa-lg fa-male"></i></a></li>
+                <li><a class="goals animated fadeIn tooltipped" data-position="right" data-delay="50" data-tooltip="Goals"><i class="fa fa-lg fa-tasks"></i></a></li>
+                <li><a class="suggestions animated fadeIn tooltipped" data-position="right" data-delay="50" data-tooltip="Suggestions"><i class="fa fa-lg fa-commenting-o"></i></a></li>
+                <li><a class="showProfile"><i class="fa fa-lg fa-chevron-down"></i></a></li>
+                <li><a class="animated fadeIn" id="logout"><i class="fa
+                 fa-lg fa-sign-out"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+    <div id="aboutUsPage" class="container">
+        <div class="row">
+            <div class="col s12">
+                <img data-caption="Different types of posture" class="materialboxed" src="img/posture1.jpg" />
+                <p>Often times, humans are unaware of their body posture due to the lack of exposure to ergonomics. Problems due to bad posture:
+                </p>
+                <ul>
+                    <li style="list-style-type: circle !important; margin-left: 2.5em;">Decrease in lung capacity</li>
+                    <li style="list-style-type: circle !important; margin-left: 2.5em;">Gastrointestinal pains</li>
+                    <li style="list-style-type: circle !important; margin-left: 2.5em;">Body Pains</li>
+                    <li style="list-style-type: circle !important; margin-left: 2.5em;">Shortness of breath</li>
+                    <li style="list-style-type: circle !important; margin-left: 2.5em;">Vascular disease</li>
+                    <li style="list-style-type: circle !important; margin-left: 2.5em;">Degradation of brain functions, etc.</li>
+                </ul>
+                <p>According to Dr. Rene Cailliet, former director of University of Southern California's Department of Physical Medicine and Rehabilitation, <span style="font-weight: bold; font-size: 1.2em;">a person's lung capacity can be affected by almost 30% due to poor body posture</span>. Therefore, it is imperative that humans are constantly aware of their body posture to ensure a healthy physique.</p>
+                <p>Many times, students wearing backpacks causes a decline in their body posture. As they grow older, the weight of their backpack grows as well. Therefore, the problem we, Evexia, are trying to address is the poor body posture of a person who is carrying a heavy object such as a backpack on their spine.</p>
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col s12">
+                <h1>What is good posture?</h1>
+                <h5>Good posture is the position in which you hold your body upright against gravity while standing, sitting, or lying down.</h5>
+                <p>According to <em>Mayfield Clinic Brain &amp; Spine</em>, proper posture</p>
+                <ul>
+                    <li style="list-style-type: circle !important; margin-left: 2.5em;">keeps bones and joints in the correct alignment so that muscles are being used properly.</li>
+                    <li style="list-style-type: circle !important; margin-left: 2.5em;">helps decrease the abnormal wearing of joint surfaces that could result in arthritis.</li>
+                    <li style="list-style-type: circle !important; margin-left: 2.5em;">decreases the stress on the ligaments holding the joints of the spine together.</li>
+                    <li style="list-style-type: circle !important; margin-left: 2.5em;">prevents the spine from becoming fixed in abnormal positions.</li>
+                    <li style="list-style-type: circle !important; margin-left: 2.5em;">prevents fatigue because muscles are being used more efficiently, allowing the body to use less energy.</li>
+                    <li style="list-style-type: circle !important; margin-left: 2.5em;">prevents strain or overuse problems.</li>
+                    <li style="list-style-type: circle !important; margin-left: 2.5em;">prevents backache and muscular pain.</li>
+                    <li style="list-style-type: circle !important; margin-left: 2.5em;">contributes to a good appearance.</li>
+                </ul>
+                <br/>
+                <div class="row">
+                    <div class="col s12">
+                        <img class="materialboxed" data-caption="Types of posture" src="img/posture2.jpg">
+                    </div>
+                </div>
+                <br/>
+                <p>But to have proper posture, it is important that you meet the following requirements:</p>
+                <ul>
+                    <li style="list-style-type: circle !important; margin-left: 2.5em;">Proper muscle flexiblity</li>
+                    <li style="list-style-type: circle !important; margin-left: 2.5em;">Ordinary motion in joints</li>
+                    <li style="list-style-type: circle !important; margin-left: 2.5em;">Strong postural muscles (i.e. Gluteus Medius, Gluteus Maximus, Quadratic Femoris, etc.)</li>
+                    <li style="list-style-type: circle !important; margin-left: 2.5em;">Proper muscle balance on both sides of spine</li>
+                    <li style="list-style-type: circle !important; margin-left: 2.5em;">Awareness of your own posture (Extremely important because good posture comes out of continuous practice)</li>
+                </ul>
+                <br/>
+                <div class="row">
+                    <div class="col s12">
+                        <img class="materialboxed" data-caption="Good Posture vs. Bad Posture" width="640" height="414" src="img/posture3.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col">
+                <h1>Our Goal</h1>
+                <p>Our goal is to bring this awareness to the people by utilizing a </p>
+                <h5>Light, Flexible Back-Strap System with Real-Rime Smart Phone Micro-Controller Monitoring</h5>
+                <div class="row">
+                    <div class="col s12 m6 l6 push-m3 push-l3">
+                        <img class="materialboxed" data-caption="Posture monitoring via flex sensor" width="270" height="480" src="img/screenshot1.jpg">
+                    </div>
+                </div>
+                <p>In order to regulate the person's posture, we will be communicating with a flex sensor on the spinal cord via Bluetooth. The screenshot above shows the Android app monitor the flex sensor as the user's posture changes. When the person has bad posture ( &lt; -25&deg; or &gt; 25&deg;), the app will alert the person of poor body posture and attempt to fix the posture with the help of vibration motors attached to the back-strap. </p>
+                <div class="row">
+                    <div class="col s12 m6 l1 push-l1">
+                        <img class="materialboxed" data-caption="Your personalized dashboard" width="640" height="347.5" src="img/screenshot2.jpg">
+                    </div>
+                </div>
+                <p>The data from the flex sensor is then transferred to your dashboard in the <span style="font-weight: bold;">Analytics</span> tab. The user can see their hourly, daily, and weekly averages and receive suggestions accordingly. They can also press on the <span style="font-weight: bold;">Mail</span> button at the bottom right corner to auto-generate a personalized posture report and share it with their doctor.</p>
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col">
+                <h1>Bibliography</h1>
+                <p>"Pressure Points for Stress." LIVESTRONG.COM. LIVESTRONG.COM, 2015. Web. 19 Feb. 2016.&lt;http://www.livestrong.com/article/114227-pressure-points-stress/&gt;.</p>
+                <p>"Posture for a Healthy Back." Posture Guidelines, Guide to Good Posture. Web. 19 Feb. 2016. &lt;http://www.mayfieldclinic.com/PE-POSTURE.htm&gt;.</p>
+            </div>
+        </div>
+    </div>
+    <div id="goalsPage" class="container-fluid">
+        <div id="goalsButton" class="fixed-action-btn horizontal" style="bottom: 45px; right: 24px;">
+            <a href="#goalsModal" data-target="goalsModal" id="addGoals" target="_top" style="background-color: #0293ed" class="btn-floating btn-large waves-effect waves-light modal-trigger">
+                <i class="large material-icons">add</i>
+            </a>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <br/>
+                <button id='clearGoals' style='color: black' class='btn waves-effect deleteGoal waves-dark white'>CLEAR</button>
+                <table class="striped centered highlight">
+                    <thead>
+                        <tr>
+                            <th data-field="goalCol">Goal</th>
+                            <th data-field="dateCol">Date</th>
+                            <th data-field="deleteCol">Delete?</th>
+                        </tr>
+                    </thead>
+                    <tbody id="goalsTable">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Modal Structure -->
+        <div id="goalsModal" class="modal bottom-sheet">
+            <div class="modal-content">
+                <h4>Add Goal</h4>
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea length="200" maxlength="100" id="goalsText" class="materialize-textarea"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a style="position: relative; bottom: 30px; !important; color: black;" id="setGoal" class="modal-action modal-close waves-effect waves-green btn-flat">Add Goal</a>
+            </div>
+        </div>
+    </div>
+    <div id="suggestionsPage" class="container-fluid">
+        <div class="row">
+            <div class="col s12">
+                <br/>
+                <div id="sugLog"></div>
+            </div>
+        </div>
+    </div>
+    <div id="graphPage" class="container-fluid animated fadeIn">
+        <div id="chartContainer" class="row">
+            <br/>
+            <div class="input-field col s12">
+                <select id="graphSelect">
+                    <option id="hourlyAvg" value="tab1" selected>Hourly Average</option>
+                    <option value="tab2">Daily Average</option>
+                    <option value="tab3">Weekly Average</option>
+                    <option value="tab4">Bad Posture Log</option>
+                </select>
+                <label>Choose</label>
+            </div>
+            <div class="input-field col s12">
+                <select id="graphTypeSelect">
+                    <option value="1" selected>Line Graph</option>
+                    <option value="2">Bar Graph</option>
+                    <option value="3">Pie Chart (By Section)</option>
+                    <option value="4">Line Graph (By Range)</option>
+                    <option value="5">Table</option>
+                </select>
+                <label>Graph Type</label>
+            </div>
+            <div id="allCharts" class="col s12 m12 l12">
+                <div id="chart"></div>
+            </div>
+            <div id="sendButton" class="fixed-action-btn horizontal" style="bottom: 45px; right: 24px;">
+                <a href="mailto:doctor@gmail.com?Subject=Hi%20[Doctor],%20I%20am%20concerned%20about%20my%20posture.%20Please%20check%20it%20out." target="_top" id="emailDoctor" style="background-color: #0293ed" class="btn-floating btn-large waves-effect waves-light">
+                    <i class="large material-icons">email</i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script>
+    $(window).load(function() {
+
+        $(".dateToday").html(getWordDateToday());
+
+        $('select').material_select();
+
+        $('.tooltipped').tooltip({
+            delay: 50
+        });
+
+        $('.modal-trigger').leanModal();
+
+        $(".button-collapse").sideNav();
+
+        initGraphs();
+        initProfile();
+
+        $("#menuBtn").click(function(e) {
+            if ($(".showProfile i").hasClass("fa-chevron-up")) {
+                $(".showProfile").html('<i style="color: black" class="fa fa-lg fa-chevron-up"></i>');
+            } else {
+                $(".showProfile").html('<i style="color: black" class="fa fa-lg fa-chevron-down"></i>');
+            }
+        });
+
+        var ref = new Firebase("https://flexsensorvalues.firebaseio.com");
+
+        // create canvas function from highcharts example http://jsfiddle.net/highcharts/PDnmQ/
+        (function(H) {
+            H.Chart.prototype.createCanvas = function(divId) {
+                var svg = this.getSVG(),
+                    width = parseInt(svg.match(/width="([0-9]+)"/)[1]),
+                    height = parseInt(svg.match(/height="([0-9]+)"/)[1]),
+                    canvas = document.createElement('canvas');
+
+                canvas.setAttribute('width', width);
+                canvas.setAttribute('height', height);
+
+                if (canvas.getContext && canvas.getContext('2d')) {
+
+                    canvg(canvas, svg);
+
+                    return canvas.toDataURL("image/jpeg");
+
+                } 
+
+            }
+        }(Highcharts));
+
+        $('#emailDoctor').click(function(e) {
+
+            e.preventDefault();
+
+            setChart3();
+            setChart2();
+            setChart1();
+
+            function setChart1() {
+                ref.on("value", function(snapshot) {
+                    var valuesStr = snapshot.val().hourly;
+
+                    var numWeeks = [];
+
+                    if (valuesStr != null && valuesStr != undefined) {
+
+                        var allStrValues = valuesStr.split("+");
+
+                        var allNumberValues = [];
+
+                        for (var j = 0; j < allStrValues.length; j++) {
+                            allNumberValues.push(parseFloat(allStrValues[j]));
+                        }
+
+
+                        for (var i = 1; i <= allNumberValues.length; i++) {
+                            numWeeks.push(i * 5);
+                        }
+
+                        $('#chart').highcharts({
+                            title: {
+                                text: 'Hourly Average Posture',
+                                x: -20 //center
+                            },
+                            subtitle: {
+                                text: 'Flex Sensor Data',
+                                x: -20
+                            },
+                            xAxis: {
+                                title: {
+                                    text: "Minutes"
+                                },
+                                categories: numWeeks
+                            },
+                            yAxis: {
+                                title: {
+                                    text: 'Average Posture (\xB0)'
+                                },
+                                plotLines: [{
+                                    value: 0,
+                                    width: 1,
+                                    color: '#94D5FF'
+                                }]
+                            },
+                            tooltip: {
+                                valueSuffix: '\xB0'
+                            },
+                            legend: {
+                                layout: 'vertical',
+                                align: 'right',
+                                verticalAlign: 'middle',
+                                borderWidth: 0
+                            },
+                            series: [{
+                                name: 'Average Posture',
+                                data: allNumberValues
+                            }]
+                        });
+                    }
+
+                });
+
+            }
+
+            function setChart2() {
+                ref.on("value", function(snapshot) {
+                    var valuesStr = snapshot.val().daily;
+
+                    var numWeeks = [];
+
+                    if (valuesStr != null && valuesStr != undefined) {
+
+                        var allStrValues = valuesStr.split("+");
+
+                        var allNumberValues = [];
+
+                        for (var j = 0; j < allStrValues.length; j++) {
+                            allNumberValues.push(parseFloat(allStrValues[j]));
+                        }
+
+
+                        for (var i = 1; i <= allNumberValues.length; i++) {
+                            numWeeks.push(i);
+                        }
+
+                        $('#chart').highcharts({
+                            title: {
+                                text: 'Daily Average Posture',
+                                x: -20 //center
+                            },
+                            subtitle: {
+                                text: 'Flex Sensor Data',
+                                x: -20
+                            },
+                            xAxis: {
+                                title: {
+                                    text: "Hours"
+                                },
+                                categories: numWeeks
+                            },
+                            yAxis: {
+                                title: {
+                                    text: 'Average Posture (\xB0)'
+                                },
+                                plotLines: [{
+                                    value: 0,
+                                    width: 1,
+                                    color: '#94D5FF'
+                                }]
+                            },
+                            tooltip: {
+                                valueSuffix: '\xB0'
+                            },
+                            legend: {
+                                layout: 'vertical',
+                                align: 'right',
+                                verticalAlign: 'middle',
+                                borderWidth: 0
+                            },
+                            series: [{
+                                name: 'Average Posture',
+                                data: allNumberValues
+                            }]
+                        });
+                    }
+
+                });
+            }
+
+            function setChart3() {
+                ref.on("value", function(snapshot) {
+                    var valuesStr = snapshot.val().weekly;
+
+                    var numWeeks = [];
+
+                    if (valuesStr != null && valuesStr != undefined) {
+
+                        var allStrValues = valuesStr.split("+");
+
+                        var allNumberValues = [];
+
+                        for (var j = 0; j < allStrValues.length; j++) {
+                            allNumberValues.push(parseFloat(allStrValues[j]));
+                        }
+
+
+                        for (var i = 1; i <= allNumberValues.length; i++) {
+                            numWeeks.push(i);
+                        }
+
+                        $('#chart').highcharts({
+                            title: {
+                                text: 'Weekly Average Posture',
+                                x: -20 //center
+                            },
+                            subtitle: {
+                                text: 'Flex Sensor Data',
+                                x: -20
+                            },
+                            xAxis: {
+                                title: {
+                                    text: "Days"
+                                },
+                                categories: numWeeks
+                            },
+                            yAxis: {
+                                title: {
+                                    text: 'Average Posture (\xB0)'
+                                },
+                                plotLines: [{
+                                    value: 0,
+                                    width: 1,
+                                    color: '#94D5FF'
+                                }]
+                            },
+                            tooltip: {
+                                valueSuffix: '\xB0'
+                            },
+                            legend: {
+                                layout: 'vertical',
+                                align: 'right',
+                                verticalAlign: 'middle',
+                                borderWidth: 0
+                            },
+                            series: [{
+                                name: 'Average Posture',
+                                data: allNumberValues
+                            }]
+                        });
+                    }
+
+                });
+            }
+
+            setTimeout(function() {
+
+                var doc = new jsPDF();
+
+                // chart height defined here so each chart can be palced
+                // in a different position
+                var chartHeight = 80;
+
+                // All units are in the set measurement for the document
+                // This can be changed to "pt" (points), "mm" (Default), "cm", "in"
+                doc.setFontSize(40);
+                doc.text(35, 25, "Guest's Posture Report");
+
+                //loop through each chart
+                var imageData = null;
+
+                for (var i = 1; i <= 3; i++) {
+
+                    if (i == 1) {
+                        setChart1();
+                    } else if (i == 2) {
+                        setChart2();
+                    } else if (i == 3) {
+                        setChart3();
+                    }
+
+                    imageData = $("#chart").highcharts().createCanvas();
+
+                    console.log("Time: " + i + " - " + imageData);
+
+                    // add image to doc, if you have lots of charts,
+                    // you will need to check if you have gone bigger 
+                    // than a page and do doc.addPage() before adding 
+                    // another image.
+
+                    /**
+                     * addImage(imagedata, type, x, y, width, height)
+                     */
+                    doc.addImage(imageData, 'JPEG', 45, (chartHeight * i) - 40, 120, chartHeight);
+
+
+                }
+
+                //save with name
+                doc.save('My Posture Report (Powered By Evexia).pdf');
+
+                setChart1();
+
+            }, 500);
+
+
+        });
+
+
+        initSuggestionsAlerts();
+
+        function initSuggestionsAlerts() {
+            var notificationMessage = "";
+
+            if (!Notification) {
+                alert('Desktop notifications not available in your browser. Try Chromium.');
+                return;
+            }
+
+            if (Notification.permission !== "granted") {
+                Notification.requestPermission();
+            } else {
+                console.log("Added already");
+            }
+
+            var quotes = ["A good stance and posture reflect a proper state of mind. - Morihei Ueshiba", "Unless some misfortune has made it impossible, everyone can have good posture. - Loretta Young", "We submit to the majority because we have to. But we are not compelled to call our attitude of subjection a posture of respect. - Ambrose Bierce", "We try, we fail, we posture, we aspire, we pontificate - and then we age, shrink, die, and vanish. - George Saunders", "People don't realize that when they 'throw out' their back, it's often because of weak abs. These muscles are essential for lower-back strength and good posture. - Sylvester Stallone", "The most important thing is posture: when you get old, it's the way you walk, the way you stand, that shows it. - Carine Roitfeld"];
+
+
+            var number = Math.floor(Math.random() * 6);
+
+            var startNotification = new Notification("Welcome Guest! How's your day?", {
+                icon: 'img/profilePic.jpg',
+                body: quotes[number]
+            });
+
+            ref.child("suggestions").on("value", function(snapshot) {
+
+                var valuesStr = snapshot.val();
+
+                //Check if value changed
+
+                if (valuesStr != null && valuesStr) {
+                    var allValues = valuesStr.split(","); //[26*2016/02/18 12:30:33, 32*2016/02/18 12:30:33, 26*2016/02/18 12:30:33, 32*2016/02/18 12:30:33]
+
+                    var val = allValues[allValues.length - 1];
+                    var eachVal = val.split("*");
+                    var suggestion = eachVal[0];
+                    var fullTimeStamp = eachVal[1].split("#")[0];
+                    var degrees = eachVal[1].split("#")[1];
+                    var date = fullTimeStamp.split(" ")[0];
+                    var time = fullTimeStamp.split(" ")[1];
+                    notificationMessage = suggestion + " You are currently bending at " + degrees + "\xB0";
+                    if (Notification.permission !== "granted")
+                        Notification.requestPermission();
+                    else {
+                        var notification = new Notification('Watch Your Posture!', {
+                            icon: 'img/evexia-logo-2.png',
+                            body: notificationMessage
+                        });
+
+                    }
+
+                } else {
+
+                }
+
+
+            });
+
+        }
+
+        function setupSuggestionsLog() {
+            var table = "<div class='row'><div class='col s12'><button id='clearSuggestions' style='color: black' class='btn waves-effect waves-dark white'>CLEAR</button><table class='animated fadeIn centered highlight striped'>";
+            table += "<thead><tr><th data-field='date'>Date of Occurrence</th>";
+            table += "<th data-field='time'>Time</th>";
+            table += "<th data-field='degrees'>Posture (\xB0)</th>";
+            table += "<th data-field='suggestion'>Suggestion</th>";
+            table += "</tr></thead>";
+            table += "<tbody id='suggestionLog'>";
+
+            var isFirstTime = true;
+
+            $("#sugLog").html("");
+
+            ref.child("suggestions").on("value", function(snapshot) {
+
+
+                var valuesStr = snapshot.val();
+
+                if (isFirstTime) {
+
+                    //Just get initial values
+
+                    if (valuesStr != null && valuesStr) {
+                        var allValues = valuesStr.split(","); //[26*2016/02/18 12:30:33, 32*2016/02/18 12:30:33, 26*2016/02/18 12:30:33, 32*2016/02/18 12:30:33]
+                        for (var i = allValues.length - 1; i >= 0; i--) {
+                            var val = allValues[i];
+                            var eachVal = val.split("*");
+                            var suggestion = eachVal[0];
+                            var fullTimeStamp = eachVal[1].split("#")[0];
+                            var degrees = eachVal[1].split("#")[1];
+                            var date = fullTimeStamp.split(" ")[0];
+                            var time = fullTimeStamp.split(" ")[1];
+                            table += "<tr><td>" + date + "</td><td>" + time + "</td><td>" + degrees + "\xB0</td><td>" + suggestion + "</td></tr>";
+                        }
+
+
+                        $("#sugLog").html(table + "</tbody></table></div></div>");
+
+
+                        isFirstTime = false;
+
+                    } else {
+
+                        $("#suggestionLog").html("<h4>No data to display</h4>");
+
+                    }
+
+                } else {
+                    //Check if value changed
+
+                    if (valuesStr != null && valuesStr) {
+                        var allValues = valuesStr.split(","); //[26*2016/02/18 12:30:33, 32*2016/02/18 12:30:33, 26*2016/02/18 12:30:33, 32*2016/02/18 12:30:33]
+
+                        var val = allValues[allValues.length - 1];
+                        var eachVal = val.split("*");
+                        var suggestion = eachVal[0];
+                        var fullTimeStamp = eachVal[1].split("#")[0];
+                        var degrees = eachVal[1].split("#")[1];
+                        var date = fullTimeStamp.split(" ")[0];
+                        var time = fullTimeStamp.split(" ")[1];
+
+                        if (allValues.length == 1) {
+                            $("#suggestionLog").html("");
+                        }
+
+                        $("#suggestionLog").prepend("<tr><td>" + date + "</td><td>" + time + "</td><td>" + degrees + "\xB0</td><td>" + suggestion + "</td></tr>");
+
+                    } else {
+
+                        $("#suggestionLog").html("<h4>No data to display</h4>");
+                    }
+                }
+
+                $("#clearSuggestions").click(function(e) {
+                    e.preventDefault();
+
+                    ref.child("suggestions").set("");
+
+                });
+
+            });
+
+        }
+
+        $("#clearGoals").click(function(e) {
+            e.preventDefault();
+
+            ref.child("goals").set("");
+
+        });
+
+        function getDateToday() {
+
+            var d = new Date();
+
+            var today = d.getMonth() + 1 + "/" + d.getDate() + "/" + d.getFullYear().toString().substring(2);
+
+            return today;
+        }
+
+        function getWordDateToday() {
+
+            var d = new Date();
+
+            var month = "";
+
+            switch (d.getMonth() + 1) {
+                case 1:
+                    month = "January";
+                    break;
+                case 2:
+                    month = "February";
+                    break;
+                case 3:
+                    month = "March";
+                    break;
+                case 4:
+                    month = "April";
+                    break;
+                case 5:
+                    month = "May";
+                    break;
+                case 6:
+                    month = "June";
+                    break;
+                case 7:
+                    month = "July";
+                    break;
+                case 8:
+                    month = "August";
+                    break;
+                case 9:
+                    month = "September";
+                    break;
+                case 10:
+                    month = "October";
+                    break;
+                case 11:
+                    month = "November";
+                    break;
+                case 12:
+                    month = "December";
+                    break;
+            }
+
+            var today = month + " " + d.getDate() + ", 20" + d.getFullYear().toString().substring(2);
+
+            return today;
+        }
+
+        var numGoals = 0;
+
+        $("#setGoal").click(function(e) {
+            var goalsText = $("#goalsText").val();
+
+            var curDate = getDateToday();
+
+            numGoals++;
+
+            var str = '<tr style="height: 100px !important;" class="animated fadeIn">';
+            str += '<td>' + goalsText + '</td>';
+            str += '<td>' + curDate + '</td>';
+            str += '<td><button style="color: black" class="btn waves-effect deleteGoal waves-dark white"><i class="fa fa-trash"></i></button></td>';
+            str += '</tr>';
+
+            $("#goalsTable").prepend(str);
+
+            $(".deleteGoal").click(function(e) {
+                e.preventDefault();
+                $(this).parent().parent().fadeOut();
+            });
+
+            var previousValue = "";
+
+            ref.child("goals").once("value", function(snapshot) {
+
+
+                previousValue = snapshot.val();
+
+                ref.child("goals").set(previousValue + "," + goalsText + "*" + curDate);
+
+
+            });
+
+
+        });
+
+        $(".goals").click(function(e) {
+            $("#graphPage").fadeOut();
+            $("#aboutUsPage").fadeOut();
+            $("#suggestionsPage").fadeOut();
+
+            $("#goalsTable").html("");
+
+            var tasks = [];
+
+            ref.child("goals").once("value", function(snapshot) {
+
+                var snapshot = snapshot.val().trim().substring(1);
+
+                if (snapshot != "") {
+
+                    console.log(snapshot);
+
+                    var values = snapshot.split(",");
+
+                    for (var i = 0; i < values.length; i++) {
+
+                        var specificValue = values[i].split("*");
+
+                        var text = specificValue[0];
+
+                        var task = {
+                            taskText: "",
+                            taskDate: ""
+                        };
+
+                        task.taskText = text;
+
+                        var date = specificValue[1];
+
+                        task.taskDate = date;
+
+                        tasks.push(task);
+                    }
+
+                    console.log(tasks[0]);
+
+                    for (var j = 0; j < tasks.length; j++) {
+                        var curTaskText = tasks[j].taskText;
+                        var curTaskDate = tasks[j].taskDate;
+
+                        var str = '<tr style="height: 100px !important;" class="animated fadeIn">';
+                        str += '<td>' + curTaskText + '</td>';
+                        str += '<td>' + curTaskDate + '</td>';
+                        str += '<td><button style="color: black" class="btn waves-effect deleteGoal waves-dark white"><i class="fa fa-trash"></i></button></td>';
+                        str += '</tr>';
+
+
+                        $("#goalsTable").prepend(str);
+
+                        $(".deleteGoal").click(function(e) {
+                            e.preventDefault();
+                            $(this).parent().parent().fadeOut();
+                        });
+                    }
+
+
+                }
+
+            });
+
+            console.log(tasks);
+
+            setTimeout(function() {
+                $("#goalsPage").fadeIn();
+            }, 500)
+
+            $(".analytics").removeClass("tabActive");
+            $(".aboutus").removeClass("tabActive");
+            $(".suggestions").removeClass("tabActive");
+            $(this).addClass("tabActive");
+
+            TweenLite.to("nav", 0.8, {
+                height: 64,
+                color: "white",
+                backgroundColor: "rgba(0, 0, 0, 0.9)",
+                ease: Sine.easeOut
+            });
+
+            $(".showProfile").html('<i style="color: white" class="fa fa-lg fa-chevron-down"></i>');
+
+            $("#profileInfo").remove();
+
+            $(".brand-logo").html("My Goals");
+
+        });
+
+
+        $(".suggestions").click(function(e) {
+            $("#graphPage").fadeOut();
+            $("#aboutUsPage").fadeOut();
+            $("#goalsPage").fadeOut();
+
+            setupSuggestionsLog();
+
+            setTimeout(function() {
+                $("#suggestionsPage").fadeIn();
+            }, 500)
+
+
+            $(".analytics").removeClass("tabActive");
+            $(".aboutus").removeClass("tabActive");
+            $(".goals").removeClass("tabActive");
+            $(this).addClass("tabActive");
+
+            TweenLite.to("nav", 0.8, {
+                height: 64,
+                color: "white",
+                backgroundColor: "rgba(0, 0, 0, 0.9)",
+                ease: Sine.easeOut
+            });
+
+            $(".showProfile").html('<i style="color: white" class="fa fa-lg fa-chevron-down"></i>');
+
+            $("#profileInfo").remove();
+
+            $(".brand-logo").html("Suggestions");
+
+        });
+
+
+
+        $(".aboutus").click(function(e) {
+            $("#graphPage").fadeOut();
+            $("#suggestionsPage").fadeOut();
+            $("#goalsPage").fadeOut();
+
+            setTimeout(function() {
+                $("#aboutUsPage").fadeIn();
+            }, 500)
+
+
+            $(".analytics").removeClass("tabActive");
+            $(".suggestions").removeClass("tabActive");
+            $(".goals").removeClass("tabActive");
+            $(this).addClass("tabActive");
+
+            TweenLite.to("nav", 0.8, {
+                height: 64,
+                color: "white",
+                backgroundColor: "rgba(0, 0, 0, 0.9)",
+                ease: Sine.easeOut
+            });
+
+            $(".showProfile").html('<i style="color: white" class="fa fa-lg fa-chevron-down"></i>');
+
+            $("#profileInfo").remove();
+
+            $(".brand-logo").html("Why Posture?");
+
+        });
+
+        $(".analytics").click(function(e) {
+            $("#aboutUsPage").fadeOut();
+            $("#suggestionsPage").fadeOut();
+            $("#goalsPage").fadeOut();
+
+            setTimeout(function() {
+                $("#graphPage").fadeIn();
+            }, 500)
+
+
+            $(".aboutus").removeClass("tabActive");
+            $(".suggestions").removeClass("tabActive");
+            $(".goals").removeClass("tabActive");
+            $(this).addClass("tabActive");
+
+
+
+            TweenLite.to("nav", 0.8, {
+                height: 64,
+                color: "white",
+                backgroundColor: "rgba(0, 0, 0, 0.9)",
+                ease: Sine.easeOut
+            });
+
+            $(".showProfile").html('<i style="color: white" class="fa fa-lg fa-chevron-down"></i>');
+
+            $("#profileInfo").remove();
+
+            $(".brand-logo").html("Guest's Dashboard");
+
+        });
+
+    });
+    </script>
+</body>
+
+</html>
