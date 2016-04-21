@@ -2,7 +2,7 @@
 
 # Improving Body Posture through a Light, Flexible Back-Strap System with Real-Time Smartphone Microcontroller Monitoring, 102-E80-D2
 
-By Mokshith Voodarla and Sriharsha Guduguntla
+By Mokshith Voodarla and Sriharsha Guduguntla and built for 2016 Synopsys Science Fair
 
 # Objectives/Goals
 
