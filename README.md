@@ -10,6 +10,8 @@ By Mokshith Voodarla and Sriharsha Guduguntla and built for 2016 Synopsys Scienc
 
 **Evexia Github**: https://github.com/sguduguntla/Evexia-Posture-Monitoring
 
+**Synopsys Entry**: http://science-fair.org/database/status.php?teacherid=2377
+
 # Objectives/Goals
 
 The objective of this project is to create a device that is able to monitor and improve the posture of a person. Everyday, more than 65 million Americans and many other people around the world either stand or sit in detrimental positions which have led to a 30% decrease in lung capacity as well as cause gastrointestinal discomfort and body pains.
