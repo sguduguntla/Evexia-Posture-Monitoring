@@ -1,4 +1,4 @@
-# Evexia
+![alt tag](https://github.com/sguduguntla/Evexia-Posture-Monitoring/blob/master/images/evexia-logo.png) 
 
 # Improving Body Posture through a Light, Flexible Back-Strap System with Real-Time Smartphone Microcontroller Monitoring, 102-E80-D2
 
