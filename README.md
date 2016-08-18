@@ -4,9 +4,9 @@
 
 By Mokshith Voodarla and Sriharsha Guduguntla and built for 2016 Synopsys Science Fair
 
-**Evexia Promo Site**: http://tinyurl.com/evexia
+**Evexia Promo Site**: http://www.sriharshaguduguntla.com/evexia
 
-**Evexia Web Dashboard**: http://tinyurl.com/evexiahome
+**Evexia Web Dashboard**: http://www.sriharshaguduguntla.com/evexia/dashboard
 
 **Evexia Github**: https://github.com/sguduguntla/Evexia-Posture-Monitoring
 
